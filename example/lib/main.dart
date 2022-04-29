@@ -16,6 +16,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+        debugShowCheckedModeBanner: false, home: DropdownExample());
+  }
+}
+
+class DropdownExample extends StatefulWidget {
+  const DropdownExample({Key? key}) : super(key: key);
+
+  @override
+  State<DropdownExample> createState() => _DropdownExampleState();
+}
+
+class _DropdownExampleState extends State<DropdownExample> {
   List<DropdownItem> _itemList = [];
   String _singleSelectedId = "";
   final List<String> _mutiSelectedIds = [];
@@ -45,55 +60,53 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Dropdown Example"),
-          ),
-          body: SafeArea(
-              child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Dropdown.singleSelection(
-                      title: "Single Selection Dropdown",
-                      labelText: "Single",
-                      hintText: "Single Selection",
-                      list: _itemList,
-                      selectedId: _singleSelectedId,
-                      onSingleItemListener: (selectedItem) {
-                        setState(() {
-                          _singleSelectedId = selectedItem.id;
-                        });
-                        String itemId = selectedItem.id;
-                        String itemName = selectedItem.value;
-                        User user = selectedItem.data as User;
-                        log("Item Id: $itemId -- Item Name: $itemName ## Other Details ## User Id: ${user.userId} -- User Name: ${user.userName}");
-                      }),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Dropdown.multiSelection(
-                      title: "Multi Selection Dropdown",
-                      labelText: "Multi",
-                      hintText: "Multi Selection",
-                      list: _itemList,
-                      selectedIds: _mutiSelectedIds,
-                      allSelection: true,
-                      onMultipleItemListener: (selectedItemList) {
-                        for (DropdownItem selectedItem in selectedItemList) {
-                          String itemId = selectedItem.id;
-                          String itemName = selectedItem.value;
-                          User user = selectedItem.data as User;
-                          log("Item Id: $itemId -- Item Name: $itemName ## Other Details ## User Id: ${user.userId} -- User Name: ${user.userName}");
-                        }
-                      })
-                ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Dropdown Example"),
+      ),
+      body: SafeArea(
+          child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Dropdown.singleSelection(
+                  title: "Single Selection Dropdown",
+                  labelText: "Single",
+                  hintText: "Single Selection",
+                  list: _itemList,
+                  selectedId: _singleSelectedId,
+                  onSingleItemListener: (selectedItem) {
+                    setState(() {
+                      _singleSelectedId = selectedItem.id;
+                    });
+                    String itemId = selectedItem.id;
+                    String itemName = selectedItem.value;
+                    User user = selectedItem.data as User;
+                    log("Item Id: $itemId -- Item Name: $itemName ## Other Details ## User Id: ${user.userId} -- User Name: ${user.userName}");
+                  }),
+              const SizedBox(
+                height: 20,
               ),
-            ),
-          )),
-        ));
+              Dropdown.multiSelection(
+                  title: "Multi Selection Dropdown",
+                  labelText: "Multi",
+                  hintText: "Multi Selection",
+                  list: _itemList,
+                  selectedIds: _mutiSelectedIds,
+                  allSelection: true,
+                  onMultipleItemListener: (selectedItemList) {
+                    for (DropdownItem selectedItem in selectedItemList) {
+                      String itemId = selectedItem.id;
+                      String itemName = selectedItem.value;
+                      User user = selectedItem.data as User;
+                      log("Item Id: $itemId -- Item Name: $itemName ## Other Details ## User Id: ${user.userId} -- User Name: ${user.userName}");
+                    }
+                  })
+            ],
+          ),
+        ),
+      )),
+    );
   }
 }

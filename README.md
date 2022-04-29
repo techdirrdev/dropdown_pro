@@ -26,7 +26,7 @@ For help getting started with Flutter, view the online
 
 ## Example
 
-Please follow this [example](https://github.com/techdirr/dropdown_pro/tree/master/example) here.
+Please follow this [example](https://github.com/techdirrdev/dropdown_pro/tree/master/example) here.
 
 ### Dropdown - Single Selection and Multi Selection
 
