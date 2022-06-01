@@ -1,11 +1,11 @@
-// dropdown item model class
+/// dropdown item model class
 class DropdownItem {
   String id;
   String value;
   bool selected = false;
   dynamic data;
 
-  // constructor for dropdown item class
+  /// constructor for dropdown item class
   DropdownItem({this.id = "", this.value = "", this.data});
 
   @override
@@ -13,7 +13,7 @@ class DropdownItem {
     return value;
   }
 
-  // generate clone list of dropdown item
+  /// generate clone list of dropdown item
   static List<DropdownItem> cloneList(List<DropdownItem> list) {
     List<DropdownItem> cloneList = [];
     for (DropdownItem obj in list) {
@@ -22,6 +22,7 @@ class DropdownItem {
     return cloneList;
   }
 
+  /// selected item by id from dropdown
   static DropdownItem? selectedItemById(List<DropdownItem> list, String id) {
     DropdownItem? selectedItem;
     for (DropdownItem obj in list) {
@@ -36,6 +37,7 @@ class DropdownItem {
     return selectedItem;
   }
 
+  /// selected item by value from dropdown
   static DropdownItem? selectedItemByValue(
       List<DropdownItem> list, String value) {
     DropdownItem? selectedItem;

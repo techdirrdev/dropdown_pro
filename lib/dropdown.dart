@@ -8,7 +8,7 @@ const String _comma = ",";
 const String _searchHere = "Search here...";
 const IconData _icSearch = Icons.search;
 
-// Dropdown for single selection or multi selection
+/// Dropdown for single selection or multi selection
 class Dropdown extends StatefulWidget {
   final List<DropdownItem> list;
   final String? selectedId;
@@ -35,7 +35,7 @@ class Dropdown extends StatefulWidget {
   final Function(List<DropdownItem> selectedItemList)? onMultipleItemListener;
   final bool _isMultiple;
 
-  // constructor for single selection dropdown
+  /// constructor for single selection dropdown
   const Dropdown.singleSelection(
       {Key? key,
       required this.list,
@@ -64,7 +64,7 @@ class Dropdown extends StatefulWidget {
         _isMultiple = false,
         super(key: key);
 
-// constructor for single multi dropdown
+  /// constructor for single multi dropdown
   const Dropdown.multiSelection(
       {Key? key,
       required this.list,
@@ -133,13 +133,13 @@ class _DropdownState extends State<Dropdown> {
     );
   }
 
-  // initial setup of dropdown item selection
+  /// initial setup of dropdown item selection
   _initialSetup() {
     String selectedValue = _getSelectedValue(list: widget.list);
     _conSelectedValue.text = selectedValue;
   }
 
-  // get selected value from dropdown item list
+  /// get selected value from dropdown item list
   String _getSelectedValue({required List<DropdownItem> list}) {
     List<String> ids = [];
     String value = widget.hintText;
@@ -171,7 +171,7 @@ class _DropdownState extends State<Dropdown> {
     return value;
   }
 
-  // check selected dropdown item
+  /// check selected dropdown item
   _checkAllSelection(List<DropdownItem> list) {
     if (widget.allSelection) {
       int selectedItemCount = 0;
@@ -190,7 +190,7 @@ class _DropdownState extends State<Dropdown> {
     }
   }
 
-  // open dropdown dialog
+  /// open dropdown dialog
   _openDropdown(
       {required BuildContext context,
       required List<DropdownItem> list,
@@ -386,7 +386,7 @@ class _DropdownState extends State<Dropdown> {
         });
   }
 
-  // dropdown item view
+  /// dropdown item view
   _dropdownItemView(BuildContext context, bool isMultiple, DropdownItem obj,
       List<DropdownItem> list, StateSetter setState) {
     return InkWell(
