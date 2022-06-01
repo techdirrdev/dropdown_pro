@@ -1,7 +1,7 @@
 name: dropdown_pro
 description: Single or Multi Selection Dropdown with search dropdown item, and easy to customization.
 repository: https://github.com/techdirrdev/dropdown_pro.git
-version: 1.1.0
+version: 1.2.0
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
