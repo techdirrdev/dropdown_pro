@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Dropdown - Single or Multi Selection Dropdown with search dropdown item, and easy to customization.
+
 ## 1.2.0
 
 * Dropdown - Single or Multi Selection Dropdown with search dropdown item, and easy to customization.
