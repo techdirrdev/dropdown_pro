@@ -1,3 +1,7 @@
+## 1.5.0
+
+* Add New Item in Dropdown dialog.
+
 ## 1.4.0
 
 * Add New Item in Dropdown dialog.
