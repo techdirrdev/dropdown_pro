@@ -6,7 +6,20 @@ const String _cancel = "Cancel";
 const String _has = "#";
 const String _comma = ",";
 const String _searchHere = "Search here...";
+const String _addItem = "Add Item";
 const IconData _icSearch = Icons.search;
+const IconData _icAdd = Icons.add;
+
+Widget _addItemWidget() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: const [
+      Text(_addItem, style: TextStyle(color: Colors.blue)),
+      SizedBox(width: 5),
+      Icon(_icAdd, color: Colors.blue, size: 20),
+    ],
+  );
+}
 
 /// Dropdown for single selection or multi selection
 class Dropdown extends StatefulWidget {
@@ -29,10 +42,14 @@ class Dropdown extends StatefulWidget {
   final String positiveButtonText;
   final Color negativeButtonTextColor;
   final Color positiveButtonTextColor;
-  final bool allSelection;
+  final bool isAllSelection;
+  final bool isAddItem;
+  final bool dismissWhenTapAddItem;
+  final Widget? addItemWidget;
   final Color checkBoxActiveColor;
   final Function(DropdownItem selectedItem)? onSingleItemListener;
   final Function(List<DropdownItem> selectedItemList)? onMultipleItemListener;
+  final Function(String searchValue)? onTapAddItem;
   final bool _isMultiple;
 
   /// constructor for single selection dropdown
@@ -52,13 +69,17 @@ class Dropdown extends StatefulWidget {
       this.prefixSearchBoxIcon = _icSearch,
       this.selectedBackgroundColor = Colors.black12,
       this.negativeButtonText = _cancel,
-      this.negativeButtonTextColor = Colors.red})
+      this.negativeButtonTextColor = Colors.red,
+      this.isAddItem = false,
+      this.dismissWhenTapAddItem = true,
+      this.onTapAddItem,
+      this.addItemWidget})
       : selectedIds = null,
         prefixSeparator = _has,
         suffixSeparator = _comma,
         positiveButtonText = _ok,
         positiveButtonTextColor = Colors.black,
-        allSelection = false,
+        isAllSelection = false,
         checkBoxActiveColor = Colors.black,
         onMultipleItemListener = null,
         _isMultiple = false,
@@ -86,8 +107,12 @@ class Dropdown extends StatefulWidget {
       this.positiveButtonText = _ok,
       this.negativeButtonTextColor = Colors.red,
       this.positiveButtonTextColor = Colors.black,
-      this.allSelection = false,
-      this.checkBoxActiveColor = Colors.black})
+      this.isAllSelection = false,
+      this.checkBoxActiveColor = Colors.black,
+      this.isAddItem = false,
+      this.dismissWhenTapAddItem = true,
+      this.onTapAddItem,
+      this.addItemWidget})
       : selectedId = null,
         onSingleItemListener = null,
         _isMultiple = true,
@@ -173,7 +198,7 @@ class _DropdownState extends State<Dropdown> {
 
   /// check selected dropdown item
   _checkAllSelection(List<DropdownItem> list) {
-    if (widget.allSelection) {
+    if (widget.isAllSelection) {
       int selectedItemCount = 0;
       for (DropdownItem obj in list) {
         if (obj.selected) {
@@ -249,7 +274,7 @@ class _DropdownState extends State<Dropdown> {
                       ),
                     ),
                     Visibility(
-                      visible: widget.searchBox || widget.allSelection,
+                      visible: widget.searchBox || widget.isAllSelection,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -284,7 +309,7 @@ class _DropdownState extends State<Dropdown> {
                                 ),
                               ),
                               Visibility(
-                                visible: widget.allSelection,
+                                visible: widget.isAllSelection,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -306,6 +331,24 @@ class _DropdownState extends State<Dropdown> {
                                 ),
                               )
                             ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Visibility(
+                            visible: widget.isAddItem,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (widget.onTapAddItem != null) {
+                                  if (widget.dismissWhenTapAddItem) {
+                                    Navigator.pop(context);
+                                  }
+                                  widget.onTapAddItem!(
+                                      _conSearchBox.text.toString());
+                                }
+                              },
+                              child: widget.addItemWidget ?? _addItemWidget(),
+                            ),
                           ),
                           const SizedBox(
                             height: 10,

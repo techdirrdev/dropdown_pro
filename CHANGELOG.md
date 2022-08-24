@@ -1,6 +1,6 @@
 ## 1.4.0
 
-* Dropdown - Single or Multi Selection Dropdown with search dropdown item, and easy to customization.
+* Add New Item in Dropdown dialog.
 
 ## 1.3.0
 

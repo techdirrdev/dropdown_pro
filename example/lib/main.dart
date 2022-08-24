@@ -76,6 +76,10 @@ class _DropdownExampleState extends State<DropdownExample> {
                   hintText: "Single Selection",
                   list: _itemList,
                   selectedId: _singleSelectedId,
+                  isAddItem: true,
+                  onTapAddItem: (searchValue) {
+                    log(searchValue);
+                  },
                   onSingleItemListener: (selectedItem) {
                     setState(() {
                       _singleSelectedId = selectedItem.id;
@@ -94,7 +98,11 @@ class _DropdownExampleState extends State<DropdownExample> {
                   hintText: "Multi Selection",
                   list: _itemList,
                   selectedIds: _mutiSelectedIds,
-                  allSelection: true,
+                  isAllSelection: true,
+                  isAddItem: true,
+                  onTapAddItem: (searchValue) {
+                    log(searchValue);
+                  },
                   onMultipleItemListener: (selectedItemList) {
                     for (DropdownItem selectedItem in selectedItemList) {
                       String itemId = selectedItem.id;
