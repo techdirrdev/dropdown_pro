@@ -1,6 +1,6 @@
 ## 1.5.0
 
-* Add New Item in Dropdown dialog.
+* Dropdown widget with decoration.
 
 ## 1.4.0
 

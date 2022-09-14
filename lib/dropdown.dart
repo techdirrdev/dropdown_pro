@@ -32,6 +32,7 @@ class Dropdown extends StatefulWidget {
   final bool enabled;
   final TextAlign textAlign;
   final InputBorder border;
+  final InputDecoration? decoration;
   final String prefixSeparator;
   final String suffixSeparator;
   final Color selectedBackgroundColor;
@@ -64,6 +65,7 @@ class Dropdown extends StatefulWidget {
       this.enabled = true,
       this.textAlign = TextAlign.start,
       this.border = const OutlineInputBorder(),
+      this.decoration,
       this.searchBox = true,
       this.searchBoxHintText = _searchHere,
       this.prefixSearchBoxIcon = _icSearch,
@@ -97,6 +99,7 @@ class Dropdown extends StatefulWidget {
       this.enabled = true,
       this.textAlign = TextAlign.start,
       this.border = const OutlineInputBorder(),
+      this.decoration,
       this.searchBox = true,
       this.prefixSeparator = _has,
       this.suffixSeparator = _comma,
@@ -150,11 +153,12 @@ class _DropdownState extends State<Dropdown> {
       readOnly: true,
       textAlign: widget.textAlign,
       enabled: widget.enabled,
-      decoration: InputDecoration(
-          suffixIcon: const Icon(Icons.arrow_drop_down_rounded),
-          border: widget.border,
-          labelText: widget.labelText,
-          hintText: widget.hintText),
+      decoration: widget.decoration ??
+          InputDecoration(
+              suffixIcon: const Icon(Icons.arrow_drop_down_rounded),
+              border: widget.border,
+              labelText: widget.labelText,
+              hintText: widget.hintText),
     );
   }
 
