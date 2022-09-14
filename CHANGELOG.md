@@ -1,3 +1,7 @@
+## 1.6.0
+
+* Dropdown widget with decoration.
+
 ## 1.5.0
 
 * Dropdown widget with decoration.
