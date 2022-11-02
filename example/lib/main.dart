@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:dropdown_pro/dropdown.dart';
 import 'package:dropdown_pro/dropdown_item.dart';
+import 'package:dropdown_pro/dropdown_textfield.dart';
 import 'package:dropdown_pro_example/user.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,7 @@ class _DropdownExampleState extends State<DropdownExample> {
   List<DropdownItem> _itemList = [];
   String _singleSelectedId = "";
   final List<String> _mutiSelectedIds = [];
+  final TextEditingController _conDropdownTextField = TextEditingController();
 
   @override
   void initState() {
@@ -110,7 +112,16 @@ class _DropdownExampleState extends State<DropdownExample> {
                       User user = selectedItem.data as User;
                       log("Item Id: $itemId -- Item Name: $itemName ## Other Details ## User Id: ${user.userId} -- User Name: ${user.userName}");
                     }
-                  })
+                  }),
+              const SizedBox(
+                height: 20,
+              ),
+              DropdownTextField(
+                controller: _conDropdownTextField,
+                list: _itemList,
+                hintText: "Item search",
+                labelText: "Item search",
+              ),
             ],
           ),
         ),

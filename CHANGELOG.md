@@ -1,6 +1,6 @@
 ## 1.6.0
 
-* Dropdown widget with decoration.
+* Dropdown with TextField widget with search.
 
 ## 1.5.0
 

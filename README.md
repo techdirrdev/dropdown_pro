@@ -105,3 +105,13 @@ Dropdown.multiSelection(
 })
 ```
 
+* Dropdown with TextField
+```dart
+DropdownTextField(
+  controller: _conDropdownTextField,
+  list: _itemList,
+  hintText: "Item search",
+  labelText: "Item search"
+),
+```
+
