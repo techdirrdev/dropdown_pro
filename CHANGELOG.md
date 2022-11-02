@@ -1,3 +1,7 @@
+## 1.7.0
+
+* Dropdown with TextField widget with search.
+
 ## 1.6.0
 
 * Dropdown with TextField widget with search.
