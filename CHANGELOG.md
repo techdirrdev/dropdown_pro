@@ -1,6 +1,6 @@
 ## 1.7.0
 
-* Dropdown with TextField widget with search.
+* Package upgrade.
 
 ## 1.6.0
 

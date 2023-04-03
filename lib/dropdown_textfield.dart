@@ -286,10 +286,10 @@ class DropdownTextField<T> extends StatefulWidget {
   }
 
   @override
-  _DropdownTextFieldState<T> createState() => _DropdownTextFieldState();
+  DropdownTextFieldState<T> createState() => DropdownTextFieldState();
 }
 
-class _DropdownTextFieldState<T> extends State<DropdownTextField<T>> {
+class DropdownTextFieldState<T> extends State<DropdownTextField<T>> {
   final StreamController<List<SearchFieldListItem<T>?>?> suggestionStream =
       StreamController<List<SearchFieldListItem<T>?>?>.broadcast();
   FocusNode? _focus;
@@ -329,7 +329,7 @@ class _DropdownTextFieldState<T> extends State<DropdownTextField<T>> {
               });
             }
           }
-          Overlay.of(context)!.insert(_overlayEntry);
+          Overlay.of(context).insert(_overlayEntry);
         } else {
           _overlayEntry.remove();
         }

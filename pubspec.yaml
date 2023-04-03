@@ -4,7 +4,7 @@ repository: https://github.com/techdirrdev/dropdown_pro.git
 version: 1.7.0
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.16.2 <3.7.7"
   flutter: ">=2.5.0"
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

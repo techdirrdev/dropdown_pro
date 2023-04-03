@@ -245,7 +245,7 @@ class _DropdownState extends State<Dropdown> {
       }
     }
 
-    List<DropdownItem> _fList = DropdownItem.cloneList(list);
+    List<DropdownItem> fList = DropdownItem.cloneList(list);
     _conSearchBox.clear();
     _checkAllSelection(list);
 
@@ -295,17 +295,17 @@ class _DropdownState extends State<Dropdown> {
                                         prefixIcon:
                                             Icon(widget.prefixSearchBoxIcon)),
                                     onChanged: (value) {
-                                      _fList.clear();
+                                      fList.clear();
                                       if ((value.trim()).isNotEmpty) {
                                         for (DropdownItem obj in list) {
                                           if (obj.value
                                               .toLowerCase()
                                               .contains(value.toLowerCase())) {
-                                            _fList.add(obj);
+                                            fList.add(obj);
                                           }
                                         }
                                       } else {
-                                        _fList = DropdownItem.cloneList(list);
+                                        fList = DropdownItem.cloneList(list);
                                       }
                                       setState(() {});
                                     },
@@ -362,15 +362,15 @@ class _DropdownState extends State<Dropdown> {
                     ),
                     Expanded(
                       child: Visibility(
-                        visible: _fList.isNotEmpty,
+                        visible: fList.isNotEmpty,
                         replacement: const Center(child: Text("No data")),
                         child: ListView.builder(
                           key: const PageStorageKey<String>('list'),
                           shrinkWrap: true,
-                          itemCount: _fList.length,
+                          itemCount: fList.length,
                           itemBuilder: (context, index) {
                             return _dropdownItemView(context, isMultiple,
-                                _fList[index], _fList, setState);
+                                fList[index], fList, setState);
                           },
                         ),
                       ),
